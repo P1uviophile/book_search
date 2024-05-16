@@ -1,0 +1,46 @@
+<!-- resources/mapper/BorrowRecordMapper.xml -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bookSearch.dao.BorrowRecordDao">
+
+	<!-- 根据 recordId 查询借阅记录 -->
+	<select id="getBorrowRecordById" resultType="com.bookSearch.model.BorrowRecord">
+		SELECT * FROM borrow_records WHERE record_id = #{record_id}
+	</select>
+
+	<!-- 根据 user_id 查询借阅记录 -->
+	<select id="getBorrowRecordByUser_id" resultType="com.bookSearch.model.BorrowRecord">
+		SELECT * FROM borrow_records WHERE user_id = #{user_id}
+	</select>
+
+	<!-- 根据 book_id 查询借阅记录 -->
+	<select id="getBorrowRecordByBook_id" resultType="com.bookSearch.model.BorrowRecord">
+		SELECT * FROM borrow_records WHERE book_id = #{book_id}
+	</select>
+
+	<!-- 查询所有借阅记录 -->
+	<select id="getAllBorrowRecords" resultType="com.bookSearch.model.BorrowRecord">
+		SELECT * FROM borrow_records
+	</select>
+
+	<!-- 插入借阅记录 -->
+	<insert id="insertBorrowRecord" parameterType="com.bookSearch.model.BorrowRecord">
+		INSERT INTO borrow_records (user_id, book_id, borrow_date, return_date, returned)
+		VALUES (#{user_id}, #{book_id}, #{borrow_date}, #{return_date}, #{returned})
+	</insert>
+
+	<!-- 更新借阅记录 -->
+	<update id="updateBorrowRecord" parameterType="com.bookSearch.model.BorrowRecord">
+		UPDATE borrow_records
+		SET user_id = #{user_id}, book_id = #{book_id}, borrow_date = #{borrow_date}, return_date = #{return_date}, returned = #{returned}
+		WHERE record_id = #{record_id}
+	</update>
+
+	<!-- 删除借阅记录 by recordId -->
+	<delete id="deleteBorrowRecord" parameterType="int">
+		DELETE FROM borrow_records WHERE record_id = #{record_id}
+	</delete>
+
+</mapper>

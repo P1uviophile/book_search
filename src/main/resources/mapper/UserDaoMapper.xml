@@ -1,0 +1,43 @@
+<!-- resources/mapper/UserMapper.xml -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bookSearch.dao.UserDao">
+
+	<!-- 查询用户信息 by username -->
+	<select id="getUserByName" resultType="com.bookSearch.model.User">
+		SELECT * FROM users WHERE username = #{username}
+	</select>
+	<!-- 查询用户信息 by userId -->
+	<select id="getUserById" resultType="com.bookSearch.model.User">
+		SELECT * FROM users WHERE user_id = #{userId}
+	</select>
+
+	<!-- 查询所有用户信息 -->
+	<select id="getAllUsers" resultType="com.bookSearch.model.User">
+		SELECT * FROM users
+	</select>
+	<!-- 模糊查询用户信息 by username -->
+	<select id="getUsersByCondition" resultType="com.bookSearch.model.User" parameterType="java.lang.String">
+		SELECT * FROM users WHERE username LIKE CONCAT('%', #{condition}, '%')
+	</select>
+	<!-- 插入用户信息 -->
+	<insert id="insertUser" parameterType="com.bookSearch.model.User">
+		INSERT INTO users (username, password, role)
+		VALUES (#{username}, #{password}, #{role})
+	</insert>
+
+	<!-- 更新用户信息 by userId -->
+	<update id="updateUser" parameterType="com.bookSearch.model.User">
+		UPDATE users
+		SET username = #{username}, password = #{password}, role = #{role}
+		WHERE user_id = #{userId}
+	</update>
+
+	<!-- 删除用户 by userId -->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM users WHERE user_id = #{userId}
+	</delete>
+
+</mapper>

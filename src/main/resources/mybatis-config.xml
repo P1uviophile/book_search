@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 设置mybatis的全局属性 -->
+	<settings>
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	<!-- 配置要读取的映射文件/映射接口的路径 -->
+	<mappers>
+<!--		<mapper resource="classpath:mapper/BookDaoMapper.xml"/>-->
+<!--		<mapper resource="classpath:mapper/BorrowRecordDaoMapper.xml"/>-->
+<!--		<mapper resource="classpath:mapper/UserDaoMapper.xml"/>-->
+<!--		<mapper resource="com/book_search/mapper/BookMapper.xml"/>-->
+<!--		<mapper resource="com/book_search/mapper/BorrowRecordMapper.xml"/>-->
+<!--		<mapper resource="com/book_search/mapper/UserMapper.xml"/>-->
+<!--		<package name="com.bookSearch.dao"/>-->
+	</mappers>
+</configuration>

@@ -1,0 +1,41 @@
+<!-- resources/mapper/BookMapper.xml -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bookSearch.dao.BookDao">
+
+	<!-- 根据 bookId 查询图书信息 -->
+	<select id="getBookById" resultType="com.bookSearch.model.Book">
+		SELECT * FROM books WHERE book_id = #{book_id}
+	</select>
+
+	<!-- 查询所有图书信息 -->
+	<select id="getAllBooks" resultType="com.bookSearch.model.Book">
+		SELECT * FROM books
+	</select>
+
+	<!-- 插入图书信息 -->
+	<insert id="insertBook" parameterType="com.bookSearch.model.Book">
+		INSERT INTO books (title, author, total_copies, available_copies)
+		VALUES (#{title}, #{author}, #{total_copies}, #{available_copies})
+	</insert>
+
+	<!-- 更新图书信息 -->
+	<update id="updateBook" parameterType="com.bookSearch.model.Book">
+		UPDATE books
+		SET title = #{title}, author = #{author}, total_copies = #{total_copies}, available_copies = #{available_copies}
+		WHERE book_id = #{book_id}
+	</update>
+
+	<!-- 删除图书信息 by bookId -->
+	<delete id="deleteBook" parameterType="int">
+		DELETE FROM books WHERE book_id = #{book_id}
+	</delete>
+
+	<!-- 模糊查询书籍信息 by title -->
+	<select id="getBooksByCondition" resultType="com.bookSearch.model.Book" parameterType="java.lang.String">
+		SELECT * FROM books WHERE title LIKE CONCAT('%', #{condition}, '%')
+	</select>
+
+</mapper>
